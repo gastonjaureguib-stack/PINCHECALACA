@@ -1,0 +1,66 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f5f1ea;
+}
+
+header {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  padding: 30px;
+}
+
+h2 {
+  border-bottom: 2px solid #ddd;
+}
+
+.producto {
+  background: white;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+.producto button {
+  margin-top: 10px;
+  background: #d9534f;
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.carrito {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.total {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.btn-comprar {
+  width: 100%;
+  margin-top: 15px;
+  background: green;
+  color: white;
+  padding: 15px;
+  border: none;
+  font-size: 16px;
+}

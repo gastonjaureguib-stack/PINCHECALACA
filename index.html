@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" href="style.css">
+<title>Pinche Calaca — Pedidos</title>
+
+<style>
+body{font-family:system-ui;background:#f4efe9;margin:0}
+header{background:#111;color:#fff;padding:18px;text-align:center}
+header h1{margin:0;font-size:clamp(20px,4vw,28px)}
+
+.container{
+ display:grid;
+ grid-template-columns:2fr 1fr;
+ gap:20px;
+ padding:20px;
+ max-width:1200px;
+ margin:auto;
+}
+
+.card{
+ background:#fff;
+ border-radius:14px;
+ padding:18px;
+ box-shadow:0 4px 12px rgba(0,0,0,.08)
+}
+
+.product{border-bottom:1px solid #eee;padding:12px 0}
+.product:last-child{border:0}
+
+button{
+ background:#e63946;
+ color:#fff;
+ border:none;
+ padding:10px 14px;
+ border-radius:8px;
+ cursor:pointer;
+ font-size:14px;
+}
+
+.qty{display:flex;gap:6px;align-items:center;margin-top:8px}
+.qty button{background:#333}
+
+.cart-item{
+ display:flex;
+ justify-content:space-between;
+ gap:10px;
+ margin:10px 0;
+ font-size:14px;
+}
+
+.total{
+ font-size:24px;
+ font-weight:bold;
+ margin-top:12px;
+ text-align:right;
+}
+
+input,select{
+ width:100%;
+ padding:10px;
+ margin-top:8px;
+ border-radius:6px;
+ border:1px solid #ddd;
+ font-size:14px;
+}
+
+.checkout{
+ background:#2a9d8f;
+ width:100%;
+ margin-top:14px;
+ padding:14px;
+ font-size:16px;
+}
+
+/* 📱 RESPONSIVE CELULAR */
+@media(max-width:900px){
+ .container{grid-template-columns:1fr;padding:14px}
+ .total{text-align:left}
+}
+
+@media(max-width:480px){
+ .card{padding:14px}
+ button{width:100%}
+ .cart-item{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>🌮 Pinche Calaca — Pedidos Online</h1>
+</header>
+
+<div class="container">
+
+<div class="card" id="menu"></div>
+
+<div class="card">
+<h2>🛒 Pedido</h2>
+<div id="cart"></div>
+<div class="total">Total $<span id="total">0</span></div>
+
+<h3>Datos</h3>
+<input id="name" placeholder="Nombre"/>
+<input id="phone" placeholder="Teléfono"/>
+<select id="pay">
+<option>Efectivo</option>
+<option>Transferencia</option>
+<option>Tarjeta</option>
+</select>
+
+<button class="checkout" onclick="sendOrder()">Enviar por WhatsApp</button>
+</div>
+
+</div>
+
+<script>
+const PHONE="59891602323";
+
+const PRODUCTS=[
+{cat:"Antojitos",name:"Tacos",price:320,fill:["Pastor","Cochinita","Birria"]},
+{cat:"Antojitos",name:"Burrito",price:390,fill:["Pastor","Cochinita"]},
+{cat:"Botanas",name:"Nachos",price:350},
+{cat:"Botanas",name:"Guacamole",price:310},
+{cat:"Especiales",name:"Gringa",price:720,fill:["Pastor","Cochinita"]}
+];
+
+let cart={};
+
+function renderMenu(){
+let html="";
+let cats=[...new Set(PRODUCTS.map(p=>p.cat))];
+
+cats.forEach(cat=>{
+html+=`<h2>${cat}</h2>`;
+PRODUCTS.filter(p=>p.cat===cat).forEach(p=>{
+html+=`<div class="product">
+<b>${p.name} — $${p.price}</b>`;
+
+if(p.fill){
+html+=`<select id="fill-${p.name}">
+<option value="">Elegir relleno</option>
+${p.fill.map(f=>`<option>${f}</option>`).join("")}
+</select>`;
+}
+
+html+=`<div class="qty">
+<button onclick="add('${p.name}')">Agregar</button>
+</div></div>`;
+});
+});
+
+document.getElementById("menu").innerHTML=html;
+}
+
+function add(name){
+let prod=PRODUCTS.find(p=>p.name===name);
+let fill="";
+
+if(prod.fill){
+fill=document.getElementById("fill-"+name).value;
+if(!fill) return alert("Elegí relleno");
+}
+
+let key=name+fill;
+if(!cart[key]) cart[key]={name,fill,qty:0,price:prod.price};
+cart[key].qty++;
+renderCart();
+}
+
+function change(key,n){
+cart[key].qty+=n;
+if(cart[key].qty<=0) delete cart[key];
+renderCart();
+}
+
+function renderCart(){
+let html="";
+let total=0;
+
+Object.entries(cart).forEach(([k,i])=>{
+let sub=i.qty*i.price;
+total+=sub;
+
+html+=`<div class="cart-item">
+<div>${i.name} ${i.fill?"("+i.fill+")":""}<br>$${i.price} x ${i.qty}</div>
+<div>
+<button onclick="change('${k}',-1)">-</button>
+<button onclick="change('${k}',1)">+</button>
+</div></div>`;
+});
+
+document.getElementById("cart").innerHTML=html||"Vacío";
+document.getElementById("total").innerText=total;
+}
+
+function sendOrder(){
+let name=document.getElementById("name").value;
+let phone=document.getElementById("phone").value;
+let pay=document.getElementById("pay").value;
+
+if(!name||!phone) return alert("Completar datos");
+
+let msg="*PEDIDO PINCHE CALACA*%0A";
+msg+=`Cliente: ${name}%0ATel: ${phone}%0APago: ${pay}%0A%0A`;
+
+let total=0;
+Object.values(cart).forEach(i=>{
+msg+=`${i.qty}x ${i.name} ${i.fill?"("+i.fill+")":""}%0A`;
+total+=i.qty*i.price;
+});
+
+msg+=`%0ATotal: $${total}`;
+window.open(`https://wa.me/${PHONE}?text=${msg}`);
+}
+
+renderMenu();
+</script>
+
+</body>
+</html>
