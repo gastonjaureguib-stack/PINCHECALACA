@@ -1,21 +1,24 @@
+// ========================
+// DATOS
+// ========================
 const productos = [
-    { nombre: "Orden de tacos", precio: 320 },
-    { nombre: "Orden de dorados", precio: 340 },
-    { nombre: "Orden de volcanes", precio: 360 },
-    { nombre: "Quesaharina", precio: 390 },
-    { nombre: "Burrito", precio: 390 },
-    { nombre: "Chimichanga", precio: 390 }
+    { nombre: "Orden de tacos", precio: 320, descripcion: "Dos tortillas de maíz + relleno" },
+    { nombre: "Orden de dorados", precio: 340, descripcion: "Dos tortillas de maíz fritas + relleno" },
+    { nombre: "Orden de volcanes", precio: 360, descripcion: "Dos tortillas de maíz + costra de queso + relleno" },
+    { nombre: "Quesaharina", precio: 390, descripcion: "Tortilla de trigo + queso + relleno" },
+    { nombre: "Burrito", precio: 390, descripcion: "Tortilla de trigo + relleno" },
+    { nombre: "Chimichanga", precio: 390, descripcion: "Tortilla de trigo frita + relleno" }
 ];
 
 const rellenos = [
-    "Al Pastor",
-    "Cochinita pibil",
-    "Chicharron prensado",
-    "Frijol con chicharrón",
-    "Birria",
-    "Milanesa",
-    "Hongos",
-    "Rajas poblabas"
+    { nombre: "Al Pastor", descripcion: "Bondiola de cerdo condimentada en salsa de especias + piña" },
+    { nombre: "Cochinita pibil", descripcion: "Bondiola de cerdo desmechada macerada en jugo de naranja" },
+    { nombre: "Chicharron prensado", descripcion: "Cueritos de cerdo fritos en salsa de tomate" },
+    { nombre: "Frijol con chicharrón", descripcion: "Chicharron prensado en salsa de tomate con frijoles negros" },
+    { nombre: "Birria", descripcion: "Carne de res estofada lentamente en una mezcla de especias" },
+    { nombre: "Milanesa", descripcion: "Milanesa de pollo cortada en tiras" },
+    { nombre: "Hongos", descripcion: "Mix de hongos frescos salteados con zucchini y cebolla" },
+    { nombre: "Rajas poblabas", descripcion: "Pimientos con maíz en salsa cremosa de queso" }
 ];
 
 let carrito = [];
@@ -24,26 +27,43 @@ const productosContainer = document.getElementById('productos-container');
 const carritoItems = document.getElementById('carrito-items');
 const totalDiv = document.getElementById('total');
 
+// ========================
+// FUNCIONES
+// ========================
+
 function renderProductos() {
     productos.forEach((prod, index) => {
         const div = document.createElement('div');
         div.className = 'producto';
         div.innerHTML = `
             <h3>${prod.nombre} — $${prod.precio}</h3>
-            <label>Relleno:
-                <select id="relleno-${index}">
-                    ${rellenos.map(r => `<option value="${r}">${r}</option>`).join('')}
-                </select>
-            </label>
-            <button onclick="agregarCarrito(${index})">Agregar</button>
+            <p>${prod.descripcion}</p>
+            <p>Rellenos:</p>
+            <div class="custom-select" id="custom-select-${index}">
+                <div class="select-selected">${rellenos[0].nombre}</div>
+                <div class="select-items">
+                    ${rellenos.map(r => `
+                        <div data-nombre="${r.nombre}">
+                            <div class="nombre">${r.nombre}</div>
+                            <div class="descripcion" style="font-size:0.8em;color:#555;margin-top:2px;">${r.descripcion}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+            <button onclick="agregarCarrito(${index})" style="margin-top:5px;">Agregar</button>
         `;
         productosContainer.appendChild(div);
     });
+
+    // Inicializa los dropdowns
+    initCustomSelects();
 }
 
 function agregarCarrito(index) {
-    const select = document.getElementById(`relleno-${index}`);
-    const rellenoSeleccionado = select.value;
+    // Tomamos el relleno desde el custom-select
+    const selectedDiv = document.querySelector(`#custom-select-${index} .select-selected`);
+    const rellenoSeleccionado = selectedDiv.textContent;
+
     const existente = carrito.find(item => item.nombre === productos[index].nombre && item.relleno === rellenoSeleccionado);
     if (existente) {
         existente.cantidad += 1;
@@ -86,7 +106,43 @@ function cambiarCantidad(idx, delta) {
     renderCarrito();
 }
 
-// WhatsApp
+// ========================
+// DROPDOWN CUSTOM
+// ========================
+function initCustomSelects() {
+    const selects = document.querySelectorAll('.custom-select');
+    selects.forEach(sel => {
+        const selected = sel.querySelector('.select-selected');
+        const items = sel.querySelector('.select-items');
+
+        // Abrir/cerrar dropdown
+        selected.addEventListener('click', () => {
+            items.style.display = items.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Seleccionar opción
+        items.querySelectorAll('div').forEach(option => {
+            option.addEventListener('click', function() {
+                const nombre = this.getAttribute('data-nombre');
+                selected.textContent = nombre;
+                items.style.display = 'none';
+            });
+        });
+    });
+
+    // Cerrar dropdown si se hace click afuera
+    document.addEventListener('click', function(e) {
+        selects.forEach(sel => {
+            if (!sel.contains(e.target)) {
+                sel.querySelector('.select-items').style.display = 'none';
+            }
+        });
+    });
+}
+
+// ========================
+// WHATSAPP
+// ========================
 const formulario = document.getElementById('formulario');
 formulario.addEventListener('submit', function(e){
     e.preventDefault();
@@ -110,5 +166,8 @@ formulario.addEventListener('submit', function(e){
     window.open(`https://wa.me/${numero}?text=${mensaje}`, '_blank');
 });
 
+// ========================
+// INICIO
+// ========================
 renderProductos();
 renderCarrito();

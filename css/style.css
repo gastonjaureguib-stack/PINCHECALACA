@@ -378,4 +378,50 @@ form#formulario button:hover {
   background-color: #333;
 }
 
+/*lo que me paso chat para rellenos*/
+.custom-select {
+  position: relative;
+  width: 190px;
+  margin-top: 5px;
+}
+
+.select-selected {
+  background-color: #f0f0f0;
+  padding: 6px 10px;
+  border: 1px solid #aaa;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.select-items {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  border-top: none;
+  width: 100%;
+  max-height: 150px;
+  overflow-y: auto;
+  display: none;
+  z-index: 99;
+}
+
+.select-items div {
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.select-items div:hover {
+  background-color: #f1f1f1;
+}
+
+.select-items div .nombre {
+  font-weight: bold;
+}
+
+.select-items div .descripcion {
+  font-size: 0.8em;
+  color: #555;
+  margin-top: 2px;
+}
+
 /*# sourceMappingURL=style.css.map */
