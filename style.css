@@ -16,7 +16,7 @@ body {
     margin: 0;
     padding: 0;
 
-    background-image: url("./img/indeximg/fondomosiaco.png");
+    background-image: url("./img/indeximg/fondomosaico.png");
     background-repeat: repeat;      /* hace que se repita como mosaico */
     background-size: 400px;         /* tamaño del patrón (ajústalo a gusto) */
     background-attachment: fixed;   /* efecto más moderno al hacer scroll */
@@ -52,50 +52,59 @@ header {
     font-weight: 600;
 }
 
-
-/* ===== CAROUSEL ===== */
-
-.carousel {
-    width: 100%;
-    max-width: 1200px;
-    margin: 40px auto;
-}
-
-.carousel img {
-    width: 100%;
-    height: auto;
-    max-height: 550px;
-    object-fit: contain;
-    border-radius: 20px;
-}
-
-
 /* ===== MAIN GENERAL ===== */
 
 main {
-    padding: 50px 20px;
+    padding: 20px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 
+
+/* ===== SLIDE / CAROUSEL FULL WIDTH FIX DEFINITIVO ===== */
+
+/* ===== CAROUSEL PROPORCIÓN EXACTA ===== */
+
+/* ===== CAROUSEL FULL WIDTH SIN DISTORSIÓN ===== */
+
+.carousel {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+}
+
+/* No forzamos proporción aquí */
+.carousel-item {
+    height: auto;
+}
+
+/* La imagen manda */
+.carousel-item img {
+    width: 100%;
+    height: auto;   /* 🔥 clave para NO estirar */
+    display: block;
+}
+
 /* ===== CARDS CATEGORÍAS ===== */
 
 .card {
+   
     margin: 20px;
     border: none;
     border-radius: 18px;
     overflow: hidden;
     transition: 0.3s ease;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 25px black;
     width: 18rem;
     text-align: center;
+   
 }
 
 .card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    box-shadow: 0 15px 35px black;
 }
 
 .card-img-top {
@@ -104,7 +113,7 @@ main {
 }
 
 .card-body {
-    background-color: #111;
+    background-color: black;
     color: white;
 }
 
@@ -117,7 +126,7 @@ main {
 }
 
 .btn-primary:hover {
-    background-color: #a91e1e;
+    background-color: black;
 }
 
 
@@ -134,15 +143,15 @@ main {
 
 /* ===== NOSOTROS ===== */
 
-.Nosotros {
-    margin-top: 80px;
+.nosotrosindex {
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
-.Nosotros-card {
-    background: #111;
+.nosotrosindex-card {
+    background: black;
     border-radius: 20px;
     padding: 40px;
     max-width: 900px;
@@ -150,15 +159,15 @@ main {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    box-shadow: 0 15px 40px black;
     text-align: center;
 }
 
-.comunidad-img {
+.nosotrosindex-img {
     width: 200px;
 }
 
-.btn-comunidad {
+.btn-nosotrosindex {
     display: inline-block;
     margin-top: 10px;
     padding: 8px 20px;
@@ -169,7 +178,7 @@ main {
     transition: 0.3s ease;
 }
 
-.btn-comunidad:hover {
+.btn-nosotrosindex:hover {
     background: #1b5e20;
 }
 
@@ -226,7 +235,7 @@ main {
 /* ===== FOOTER ===== */
 
 footer {
-    background: #111;
+    background: black;
     color: white;
     padding: 60px 20px;
     margin-top: 100px;
@@ -238,6 +247,7 @@ footer {
     flex-direction: column;
     align-items: center;
     gap: 40px;
+    padding: 50px;
 }
 
 .footer-links,
