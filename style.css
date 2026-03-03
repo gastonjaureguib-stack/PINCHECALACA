@@ -12,6 +12,18 @@ body {
     color: white;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+
+    background-image: url("./img/indeximg/fondomosiaco.png");
+    background-repeat: repeat;      /* hace que se repita como mosaico */
+    background-size: 400px;         /* tamaño del patrón (ajústalo a gusto) */
+    background-attachment: fixed;   /* efecto más moderno al hacer scroll */
+    
+    font-family: Arial, sans-serif;
+}
+
 
 /* ===== HEADER ===== */
 
