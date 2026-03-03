@@ -1,224 +1,191 @@
 <!DOCTYPE html>
 <html lang="es">
+
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link rel="stylesheet" href="style.css">
-<title>Pinche Calaca — Pedidos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinche Calaca</title>
 
-<style>
-body{font-family:system-ui;background:#f4efe9;margin:0}
-header{background:#111;color:#fff;padding:18px;text-align:center}
-header h1{margin:0;font-size:clamp(20px,4vw,28px)}
 
-.container{
- display:grid;
- grid-template-columns:2fr 1fr;
- gap:20px;
- padding:20px;
- max-width:1200px;
- margin:auto;
-}
 
-.card{
- background:#fff;
- border-radius:14px;
- padding:18px;
- box-shadow:0 4px 12px #e63946
-}
+    <!-- Boostrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
-.product{border-bottom:1px solid #eee;padding:12px 0}
-.product:last-child{border:0}
+    <!-- Archivo CSS principal -->
+    <link rel="stylesheet" href="./style.css">
 
-button{
- background:#e63946;
- color:#fff;
- border:none;
- padding:10px 14px;
- border-radius:8px;
- cursor:pointer;
- font-size:14px;
-}
 
-.qty{display:flex;gap:6px;align-items:center;margin-top:8px}
-.qty button{background:red}
+    <!-- Incorporación de nuevos metas -->
+    <meta name="description"
+        content="Los verdaderos antojitos mexicanos en el corazón de Punta Carretas. Ven a conocer nuestro concepto: Tablitas mexas y tragos deliciosos.">
+    <meta name="author" content="Gastón Jaureguiberry">
 
-.cart-item{
- display:flex;
- justify-content:space-between;
- gap:10px;
- margin:10px 0;
- font-size:14px;
-}
-
-.total{
- font-size:24px;
- font-weight:bold;
- margin-top:12px;
- text-align:right;
-}
-
-input,select{
- width:100%;
- padding:10px;
- margin-top:8px;
- border-radius:6px;
- border:1px solid #ddd;
- font-size:14px;
-}
-
-.checkout{
- background:#2a9d8f;
- width:100%;
- margin-top:14px;
- padding:14px;
- font-size:16px;
-}
-
-/* 📱 RESPONSIVE CELULAR */
-@media(max-width:900px){
- .container{grid-template-columns:1fr;padding:14px}
- .total{text-align:left}
-}
-
-@media(max-width:480px){
- .card{padding:14px}
- button{width:100%}
- .cart-item{flex-direction:column}
-}
-</style>
 </head>
+
 <body>
 
-<header>
-<h1>🌮 Pinche Calaca — Pedidos Online</h1>
-</header>
+    <!-- ========== BLOQUE 1: HEADER (Encabezado general del sitio) ========== -->
+    <header>
 
-<div class="container">
-
-<div class="card" id="menu"></div>
-
-<div class="card">
-<h2>🛒 Pedido</h2>
-<div id="cart"></div>
-<div class="total">Total $<span id="total">0</span></div>
-
-<h3>Datos</h3>
-<input id="name" placeholder="Nombre"/>
-<input id="phone" placeholder="Teléfono"/>
-<select id="pay">
-<option>Efectivo</option>
-<option>Transferencia</option>
-<option>Tarjeta</option>
-</select>
-
-<button class="checkout" onclick="sendOrder()">Enviar por WhatsApp</button>
+       <!-- Logo de la marca  -->
+<div class="imagenlogo">
+    <a href="./index.html">
+        <img src="./img/indeximg//logopinchecalaca.png" alt="frente del local.">
+    </a>
 </div>
 
+        <!-- Título principal -->
+        <div class="titulo">
+            <h1>Pinche Calaca - Pedidos a domicilio </h1>
+        </div>
+  
+    </header>
+
+
+    <!-- ========== BLOQUE 2: MAIN (Contenido principal del sitio) ========== -->
+
+    <main>
+
+ <!-- ===== Slide promociones===== -->
+
+
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="./img/indeximg/publicidad1.png" class="d-block w-100" alt="Sabores que estan cañon, foto de plato">
+    </div>
+    <div class="carousel-item">
+      <img src="./img/indeximg/publicidad2.png" class="d-block w-100" alt="foto de comida 2">
+    </div>
+    <div class="carousel-item">
+      <img src="./img/indeximg/reseñasindex.png" class="d-block w-100" alt="reserñas de internet">
+    </div>
+  </div>
 </div>
 
-<script>
-const PHONE="59891602323";
+  <!-- ===== Categorías ===== -->
 
-const PRODUCTS=[
-{cat:"Antojitos",name:"Tacos",price:320,fill:["Pastor","Cochinita","Birria"]},
-{cat:"Antojitos",name:"Burrito",price:390,fill:["Pastor","Cochinita"]},
-{cat:"Botanas",name:"Nachos",price:350},
-{cat:"Botanas",name:"Guacamole",price:310},
-{cat:"Especiales",name:"Gringa",price:720,fill:["Pastor","Cochinita"]}
-];
+ <!-- Categoria  Antojitos-->
 
-let cart={};
+<div class="card" style="width: 18rem;">
+  <img src="./img/indeximg/publicidad1.png" class="card-img-top" alt="Foto de antojitos">
+  <div class="card-body">
+    <h5 class="card-title">Antojitos</h5>
+    <p class="card-text">Aca estaria bueno poner algo sobre los antojitos.</p>
+    <a href="#" class="btn btn-primary">Quiero probarlos!</a>
+  </div>
+</div>
 
-function renderMenu(){
-let html="";
-let cats=[...new Set(PRODUCTS.map(p=>p.cat))];
+<!-- Categoria  Para compartir-->
 
-cats.forEach(cat=>{
-html+=`<h2>${cat}</h2>`;
-PRODUCTS.filter(p=>p.cat===cat).forEach(p=>{
-html+=`<div class="product">
-<b>${p.name} — $${p.price}</b>`;
+<div class="card" style="width: 18rem;">
+  <img src="./img/indeximg/publicidad1.png" class="card-img-top" alt="Foto de antojitos">
+  <div class="card-body">
+    <h5 class="card-title">Pa' Compartir</h5>
+    <p class="card-text">Aca estaria bueno poner algo sobre compartir.</p>
+    <a href="#" class="btn btn-primary">Queremos probar!</a>
+  </div>
+</div>
 
-if(p.fill){
-html+=`<select id="fill-${p.name}">
-<option value="">Elegir relleno</option>
-${p.fill.map(f=>`<option>${f}</option>`).join("")}
-</select>`;
-}
 
-html+=`<div class="qty">
-<button onclick="add('${p.name}')">Agregar</button>
-</div></div>`;
-});
-});
+<!-- Categoria Botanas-->
 
-document.getElementById("menu").innerHTML=html;
-}
+<div class="card" style="width: 18rem;">
+  <img src="./img/indeximg/publicidad1.png" class="card-img-top" alt="Foto de antojitos">
+  <div class="card-body">
+    <h5 class="card-title">Botanas</h5>
+    <p class="card-text">Aca estaria bueno poner algo sobre Botanas.</p>
+    <a href="#" class="btn btn-primary">Queremos probar!</a>
+  </div>
+</div>
 
-function add(name){
-let prod=PRODUCTS.find(p=>p.name===name);
-let fill="";
+        <!-- ===== Nosotros ===== -->
+        <section class="Nosotros">
 
-if(prod.fill){
-fill=document.getElementById("fill-"+name).value;
-if(!fill) return alert("Elegí relleno");
-}
+            <article class="Nosotros-card">
 
-let key=name+fill;
-if(!cart[key]) cart[key]={name,fill,qty:0,price:prod.price};
-cart[key].qty++;
-renderCart();
-}
+                <img src="./img/indeximg/logopinchecalaca.png" alt="Equipoo"
+                    class="comunidad-img">
 
-function change(key,n){
-cart[key].qty+=n;
-if(cart[key].qty<=0) delete cart[key];
-renderCart();
-}
+                <div class="comunidad-texto">
+                    <h2>¿Conoces la Pince Calaca?</h2>
 
-function renderCart(){
-let html="";
-let total=0;
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
 
-Object.entries(cart).forEach(([k,i])=>{
-let sub=i.qty*i.price;
-total+=sub;
+                    <a href="" class="btn-comunidad"> Conocé nuestra historia!
+                    </a>
+                </div>
 
-html+=`<div class="cart-item">
-<div>${i.name} ${i.fill?"("+i.fill+")":""}<br>$${i.price} x ${i.qty}</div>
-<div>
-<button onclick="change('${k}',-1)">-</button>
-<button onclick="change('${k}',1)">+</button>
-</div></div>`;
-});
+            </article>
 
-document.getElementById("cart").innerHTML=html||"Vacío";
-document.getElementById("total").innerText=total;
-}
+        </section>
 
-function sendOrder(){
-let name=document.getElementById("name").value;
-let phone=document.getElementById("phone").value;
-let pay=document.getElementById("pay").value;
+    </main>
 
-if(!name||!phone) return alert("Completar datos");
+    <div class="whatsapp-button">
 
-let msg="*PEDIDO PINCHE CALACA*%0A";
-msg+=`Cliente: ${name}%0ATel: ${phone}%0APago: ${pay}%0A%0A`;
+  <a href="https://wa.me/59891602323" target="_blank" class="wpbottom">
+    <img class="taquito-wp" src="./img/indeximg/taquitowzzp.png" alt="taquito con cartel">
+    <img class="logo-wp" src="./img/indeximg/botonwhatsapp.png" alt="Envíanos un whatsapp">
+  </a>
+</div>
 
-let total=0;
-Object.values(cart).forEach(i=>{
-msg+=`${i.qty}x ${i.name} ${i.fill?"("+i.fill+")":""}%0A`;
-total+=i.qty*i.price;
-});
 
-msg+=`%0ATotal: $${total}`;
-window.open(`https://wa.me/${PHONE}?text=${msg}`);
-}
 
-renderMenu();
-</script>
 
+
+    <!-- ========== BLOQUE 3: FOOTER (Pie de página) ========== -->
+    <footer>
+
+
+
+        <div class="footer-grid">
+
+            <!-- Columna 1 -->
+            <div class="footer-col">
+                <h3>Gracias por elegirnos!</h3>
+                <nav>
+                    <ul class="footer-links">
+                        <li><a href="./index.html">Inicio</a></li>
+                        <li><a href="">Antojitos</a></li>
+                        <li><a href="">Pa' Compartir</a></li>
+                        <li><a href="">Botanas</a></li>
+                        <li><a href="">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+           
+            <!-- Columna 3 -->
+            <div class="footer-col">
+                <h3>Seguinos en redes</h3>
+                <ul class="footer-redes">
+                    <li>
+                        <a href="https://www.facebook.com/profile.php?id=61553019093121" target="_blank">
+
+                            
+                            <img src="./img/indeximg/facebooktransparente.png" alt="Siguenos en facebook">Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/pinchecalaca.uy/?hl=es-la" target="_blank">
+                            <img src="./img/indeximg/instagramtransparente.png" alt="Siguenos en instagram">Instagram
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
