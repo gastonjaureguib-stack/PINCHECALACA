@@ -151,7 +151,7 @@ main {
 }
 
 .nosotrosindex-card {
-    background: black;
+   
     border-radius: 20px;
     padding: 40px;
     max-width: 900px;
@@ -235,10 +235,10 @@ main {
 /* ===== FOOTER ===== */
 
 footer {
-    background: black;
+    
     color: white;
     padding: 60px 20px;
-    margin-top: 100px;
+    margin-top: 10px;
     text-align: center;
 }
 
