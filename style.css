@@ -162,42 +162,53 @@ main {
 }
 
 
-/* ===== BOTÓN WHATSAPP ===== */
+/* ===== BOTÓN FLOTANTE WHATSAPP ===== */
 
-.whatsapp-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
+
+  .whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
 }
 
 .wpbottom {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  
+  position: relative;
+  &:hover {
+    img {
+      filter: drop-shadow(0 0 8px rgba(0, 255, 120, 0.6))
+          drop-shadow(0 0 16px rgba(0, 255, 120, 0.35));
+
+    }
+  }
 }
 
+
+.wpbottom {
+  display: flex;
+  align-items: center;
+  gap: 1px; 
+}
+
+/* taquito */
 .taquito-wp {
-    width: 110px;
-    animation: flotar 2.5s ease-in-out infinite;
+  width: 150px;
+  height: auto;
+  animation: plantita-viva 5s ease-in-out infinite;
+  transform-origin: center bottom;
+  margin-right: -50px; 
+  z-index: 9999;
 }
 
+
+/* Botón WhatsApp */
 .logo-wp {
-    width: 55px;
-    transition: 0.3s ease;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
 
-.logo-wp:hover {
-    transform: scale(1.15);
-}
-
-/* Animación flotante */
-
-@keyframes flotar {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
-    100% { transform: translateY(0px); }
-}
 
 
 /* ===== FOOTER ===== */
