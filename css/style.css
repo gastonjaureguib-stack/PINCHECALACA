@@ -39,14 +39,26 @@ header {
 body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-family: "Segoe UI", sans-serif;
-  background-color: #373E40;
   color: #EFEFEF;
+  min-height: 100vh;
+  background-color: #000;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background-image: url("../img/indeximg/fondomosaico.png");
-  background-repeat: repeat;
-  background-size: 100px 100px;
-  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  z-index: -1;
 }
 
 /* ===== MAIN GENERAL ===== */
