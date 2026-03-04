@@ -201,7 +201,7 @@ formulario.addEventListener('submit', function(e){
     mensaje += `%0ATotal: $${total}%0A`;
     mensaje += `Dirección: ${direccion}%0AMétodo de pago: ${pago}`;
 
-    const numero = "598XXXXXXXX"; // reemplaza con tu número de WhatsApp
+    const numero = "59898021777"; // reemplaza con tu número de WhatsApp
     window.open(`https://wa.me/${numero}?text=${mensaje}`, '_blank');
 });
 
