@@ -2,12 +2,42 @@
 // DATOS
 // ========================
 const productos = [
-    { nombre: "Orden de tacos", precio: 320, descripcion: "Dos tortillas de maíz + relleno" },
-    { nombre: "Orden de dorados", precio: 340, descripcion: "Dos tortillas de maíz fritas + relleno" },
-    { nombre: "Orden de volcanes", precio: 360, descripcion: "Dos tortillas de maíz + costra de queso + relleno" },
-    { nombre: "Quesaharina", precio: 390, descripcion: "Tortilla de trigo + queso + relleno" },
-    { nombre: "Burrito", precio: 390, descripcion: "Tortilla de trigo + relleno" },
-    { nombre: "Chimichanga", precio: 390, descripcion: "Tortilla de trigo frita + relleno" }
+  {
+    nombre: "Orden de tacos",
+    precio: 320,
+    descripcion: "Dos tortillas de maíz + relleno",
+    imagen: "../img/antojitosimg/productos.png"
+  },
+  {
+    nombre: "Orden de dorados",
+    precio: 340,
+    descripcion: "Dos tortillas de maíz fritas + relleno",
+    imagen: "../img/antojitosimg/productos.png"
+  },
+  {
+    nombre: "Orden de volcanes",
+    precio: 360,
+    descripcion: "Dos tortillas de maíz + costra de queso + relleno",
+    imagen: "../img/antojitosimg/productos.png"
+  },
+  {
+    nombre: "Quesaharina",
+    precio: 390,
+    descripcion: "Tortilla de trigo + queso + relleno",
+    imagen: "../img/antojitosimg/productos.png"
+  },
+  {
+    nombre: "Burritos",
+    precio: 390,
+    descripcion: "Tortilla de trigo + relleno",
+    imagen: "../img/antojitosimg/productos.png"
+  },
+  {
+    nombre: "Chimichangas",
+    precio: 390,
+    descripcion: "Tortilla de trigo frita + relleno",
+    imagen: "../img/antojitosimg/productos.png"
+  }
 ];
 
 const rellenos = [
@@ -36,22 +66,31 @@ function renderProductos() {
         const div = document.createElement('div');
         div.className = 'producto';
         div.innerHTML = `
-            <h3>${prod.nombre} — $${prod.precio}</h3>
-            <p>${prod.descripcion}</p>
-            <p>Rellenos:</p>
-            <div class="custom-select" id="custom-select-${index}">
-                <div class="select-selected">${rellenos[0].nombre}</div>
-                <div class="select-items">
-                    ${rellenos.map(r => `
-                        <div data-nombre="${r.nombre}">
-                            <div class="nombre">${r.nombre}</div>
-                            <div class="descripcion" style="font-size:0.8em;color:#555;margin-top:2px;">${r.descripcion}</div>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-            <button onclick="agregarCarrito(${index})" style="margin-top:5px;">Agregar</button>
-        `;
+  <img 
+    src="${prod.imagen}" 
+    alt="${prod.nombre}" 
+    class="producto-img"
+  >
+
+  <h3>${prod.nombre} — $${prod.precio}</h3>
+  <p>${prod.descripcion}</p>
+
+  <p> Elija su relleno:</p>
+
+  <div class="custom-select" id="custom-select-${index}">
+    <div class="select-selected">${rellenos[0].nombre}</div>
+    <div class="select-items">
+      ${rellenos.map(r => `
+        <div data-nombre="${r.nombre}">
+          <div class="nombre">${r.nombre}</div>
+          <div class="descripcion">${r.descripcion}</div>
+        </div>
+      `).join('')}
+    </div>
+  </div>
+
+  <button onclick="agregarCarrito(${index})">Agregar</button>
+`;
         productosContainer.appendChild(div);
     });
 
