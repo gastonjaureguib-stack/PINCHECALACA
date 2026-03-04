@@ -1,3 +1,6 @@
+@use '../components/variables' as v;
+
+
 /* ===== CARDS CATEGORÍAS ===== */
 
 .card {
@@ -13,9 +16,10 @@
    
 }
 
+
 .card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 35px black;
+    box-shadow: 0 15px 35px v.$color-cyan;
 }
 
 .card-img-top {
@@ -24,12 +28,12 @@
 }
 
 .card-body {
-    background-color: black;
-    color: white;
+    background-color: v.$color-griscalaca;
+    color: v.$color-blanco;
 }
 
 .btn-primary {
-    background-color: #c62828;
+    background-color:v.$color-rojo;
     border: none;
     border-radius: 25px;
     padding: 8px 20px;
@@ -37,7 +41,7 @@
 }
 
 .btn-primary:hover {
-    background-color: black;
+    background-color: v.$color-cyan;
 }
 
 
@@ -52,6 +56,10 @@
 }
 
 
+
+
+
+
 /* ===== NOSOTROS ===== */
 
 .nosotrosindex {
@@ -62,7 +70,7 @@
 }
 
 .nosotrosindex-card {
-   
+   background-color: v.$color-griscalaca;
     border-radius: 20px;
     padding: 40px;
     max-width: 900px;
@@ -82,13 +90,19 @@
     display: inline-block;
     margin-top: 10px;
     padding: 8px 20px;
-    background: #2e7d32;
-    color: white;
+    background: v.$color-cyan;
+    color: v.$color-blanco;
     text-decoration: none;
     border-radius: 20px;
     transition: 0.3s ease;
 }
 
 .btn-nosotrosindex:hover {
-    background: #1b5e20;
+    background: v.$color-cyan;
 }
+
+.nosotrosindex-texto{
+  color: v.$color-blanco;
+    }
+
+

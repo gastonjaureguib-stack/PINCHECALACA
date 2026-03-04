@@ -1,10 +1,11 @@
+
+@use '../components/variables' as v;
+
 /* ===== BOTÓN FLOTANTE WHATSAPP ===== */
-
-
   .whatsapp-button {
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  right: 5px;
   z-index: 1000;
 }
 
@@ -13,8 +14,8 @@
   position: relative;
   &:hover {
     img {
-      filter: drop-shadow(0 0 8px rgba(0, 255, 120, 0.6))
-          drop-shadow(0 0 16px rgba(0, 255, 120, 0.35));
+      filter: drop-shadow(0 0 8px v.$color-cyan)
+          drop-shadow(0 0 16px v.$color-cyan);
 
     }
   }
@@ -29,7 +30,7 @@
 
 /* taquito */
 .taquito-wp {
-  width: 150px;
+  width: 80px;
   height: auto;
   animation: plantita-viva 5s ease-in-out infinite;
   transform-origin: center bottom;
@@ -40,8 +41,8 @@
 
 /* Botón WhatsApp */
 .logo-wp {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
 }
 

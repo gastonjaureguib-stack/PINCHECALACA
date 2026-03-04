@@ -1,26 +1,29 @@
+@use '../components/variables' as v;
+
 /* ===== HEADER ===== */
 
 header {
-    background: black;
-    color: white;
-    padding: 60px 20px;
+    
+    padding: 10px 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-image: url(../img/indeximg/portada.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .imagenlogo img {
-    width: 130px;
+    width: 350px;
     margin-bottom: 15px;
+    margin-top: 15px;
 }
 
 .titulo h1 {
     font-size: 1.8rem;
     font-weight: 600;
 }
+
+  

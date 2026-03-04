@@ -1,5 +1,5 @@
 
-
+@use '../components/variables' as v;
 
 
 
@@ -7,7 +7,7 @@
 
 footer {
     
-    color: white;
+    color: v.$color-blanco;
     padding: 60px 20px;
     margin-top: 10px;
     text-align: center;
@@ -34,14 +34,14 @@ footer {
 
 .footer-links a,
 .footer-redes a {
-    color: white;
+    color: v.$color-blanco;
     text-decoration: none;
     transition: 0.3s;
 }
 
 .footer-links a:hover,
 .footer-redes a:hover {
-    color: #c62828;
+    color: v.$color-rojo;
 }
 
 .footer-redes img {
