@@ -32,7 +32,7 @@ const rellenos = [
 "Al Pastor (Bondiola de cerdo condimentada en salsa de especias + piña)",
 "Cochinita pibil (Bondiola de cerdo desmechada macerada en jugo de naranja.)",
 "Chicharron prensado (Cueritos de cerdo fritos en salsa de tomate.)",
-"frijol con chicharrón (Chicharron prensado en salsa de tomate con frijoles negros)",
+"Frijol con chicharrón (Chicharron prensado en salsa de tomate con frijoles negros)",
 "Birria (Carne de res estofada lentamente en una mezcla de especias)",
 "Milanesa (Milanesa de pollo cortada en tiras)",
 "Hongos (Mix de hongos frescos salteados con succhini y cebolla)",
