@@ -1,3 +1,4 @@
+@use 'components/variables' as v;
 
 @use 'index/reset';
 @use 'index/header';
@@ -6,5 +7,6 @@
 @use 'index/botonwzzp';
 @use 'index/cardsindex';
 @use 'index/Slide';
-@use 'paginas/antojitos.scss';
-@use 'components/variables' as *;
+
+@use 'paginas/antojitos';
+@use 'paginas/paracompartir';

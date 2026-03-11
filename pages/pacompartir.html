@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pa Compartir — Pedido</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<h1>🍽️ Pa' Compartir</h1>
+
+<div id="productos-compartir"></div>
+
+<div class="carrito">
+<h2>Carrito</h2>
+<div id="carrito-items"></div>
+<div id="total">Total: $0</div>
+</div>
+
+<form id="formulario">
+
+<input type="text" id="nombre" placeholder="Nombre completo" required>
+
+<input type="text" id="direccion" placeholder="Dirección" required>
+
+<select id="pago" required>
+<option value="">Método de pago</option>
+<option value="Efectivo">Efectivo</option>
+<option value="Transferencia">Transferencia</option>
+</select>
+
+<button type="submit">Enviar pedido por WhatsApp</button>
+
+</form>
+
+<script src="../javascript/pacompartir.js"></script>
+
+</body>
+</html>

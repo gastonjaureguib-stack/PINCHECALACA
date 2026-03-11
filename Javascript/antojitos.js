@@ -6,37 +6,37 @@ const productos = [
     nombre: "Orden de tacos",
     precio: 320,
     descripcion: "Dos tortillas de maíz + relleno",
-    imagen: "../img/antojitosimg/productos.png"
+    imagen: "../img/antojitosimg/tacos.png"
   },
   {
     nombre: "Orden de dorados",
     precio: 340,
     descripcion: "Dos tortillas de maíz fritas + relleno",
-    imagen: "../img/antojitosimg/productos.png"
+    imagen: "../img/antojitosimg/dorados.png"
   },
   {
     nombre: "Orden de volcanes",
     precio: 360,
     descripcion: "Dos tortillas de maíz + costra de queso + relleno",
-    imagen: "../img/antojitosimg/productos.png"
+    imagen: "../img/antojitosimg/volcanes.png"
   },
   {
     nombre: "Quesaharina",
     precio: 390,
     descripcion: "Tortilla de trigo + queso + relleno",
-    imagen: "../img/antojitosimg/productos.png"
+    imagen: "../img/antojitosimg/quesaharina.png"
   },
   {
     nombre: "Burritos",
     precio: 390,
     descripcion: "Tortilla de trigo + relleno",
-    imagen: "../img/antojitosimg/productos.png"
+    imagen: "../img/antojitosimg/burrito.png"
   },
   {
     nombre: "Chimichangas",
     precio: 390,
     descripcion: "Tortilla de trigo frita + relleno",
-    imagen: "../img/antojitosimg/productos.png"
+    imagen: "../img/antojitosimg/chimichangas.png"
   }
 ];
 

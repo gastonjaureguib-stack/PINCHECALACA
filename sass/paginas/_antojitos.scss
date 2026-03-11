@@ -1,16 +1,8 @@
-@use '../components/variables' as v;
+
+@use "../components/variables" as v;
 
 /* sass/paginas/antojitos.scss */
 
-body {
-  font-family: Arial, sans-serif;
-  background-image: url("../img/indeximg/fondomosaico.png"); /* Fondo si quieres */
-  background-size: cover;
-  background-position: center;
-  margin: 0;
-  padding: 20px;
-  color: #000; /* texto negro */
-}
 
 /* Título principal */
 h1 {
