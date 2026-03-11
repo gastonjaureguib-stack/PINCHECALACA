@@ -160,13 +160,13 @@ function initCustomSelects() {
         });
 
         // Seleccionar opción
-        items.querySelectorAll('div').forEach(option => {
-            option.addEventListener('click', function() {
-                const nombre = this.getAttribute('data-nombre');
-                selected.textContent = nombre;
-                items.style.display = 'none';
-            });
-        });
+items.querySelectorAll('[data-nombre]').forEach(option => {
+    option.addEventListener('click', function() {
+        const nombre = this.getAttribute('data-nombre');
+        selected.textContent = nombre;
+        items.style.display = 'none';
+    });
+});
     });
 
     // Cerrar dropdown si se hace click afuera

@@ -276,146 +276,91 @@ footer {
 /* Título principal */
 h1 {
   text-align: center;
-  margin-bottom: 30px;
+  margin: 25px 0;
   color: white;
 }
 
-/* Contenedor de productos */
+/* =========================
+   PRODUCTOS
+   ========================= */
 #productos-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding: 12px;
+  max-width: 700px;
+  margin: auto;
 }
 
-/* Cada producto en caja blanca */
+/* Cada producto */
 .producto {
   background-color: #EFEFEF;
   color: #000;
   border-radius: 12px;
-  padding: 15px;
-  width: 230px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  gap: 6px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease;
 }
 
 .producto:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  transform: translateY(-3px);
 }
 
 .producto-img {
   width: 100%;
-  height: 140px;
+  height: 120px;
   object-fit: cover;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 .producto h3 {
-  margin: 5px 0 0 0;
+  margin: 4px 0;
   font-size: 16px;
   text-align: center;
 }
 
-/* Desplegable de rellenos */
-.producto select {
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-/* Botones de agregar/quitar */
-button {
-  padding: 5px 10px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  background-color: #000;
-  color: #fff;
-  font-weight: bold;
-  transition: 0.2s;
-}
-
-button:hover {
-  background-color: #333;
-}
-
-/* Carrito */
-.carrito {
-  margin-top: 40px;
-  background-color: #fff;
-  color: #000;
-  padding: 15px;
-  border-radius: 8px;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.carrito h2 {
-  margin-top: 0;
+.producto p {
+  font-size: 13px;
   text-align: center;
 }
 
-.carrito-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.cantidad-btn {
-  margin: 0 3px;
-  padding: 3px 8px;
-  font-weight: bold;
-}
-
-/* Formulario */
-form#formulario {
-  max-width: 500px;
-  margin: 20px auto 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-form#formulario input,
-form#formulario select,
-form#formulario button {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-}
-
-form#formulario button {
-  border: none;
-  background-color: #000;
+/* =========================
+   BOTONES
+   ========================= */
+.producto button {
+  background-color: #E66061;
   color: #fff;
+  border-radius: 8px;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
   font-weight: bold;
+  margin-top: auto;
 }
 
-form#formulario button:hover {
-  background-color: #333;
+.producto button:hover {
+  background-color: darkred;
 }
 
-/*lo que me paso chat para rellenos*/
+/* =========================
+   CUSTOM SELECT RELLENOS
+   ========================= */
 .custom-select {
   position: relative;
-  width: 190px;
+  width: 100%;
   margin-top: 5px;
 }
 
 .select-selected {
   background-color: #f0f0f0;
-  padding: 6px 10px;
+  padding: 8px 10px;
   border: 1px solid #aaa;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 14px;
 }
 
 .select-items {
@@ -431,7 +376,7 @@ form#formulario button:hover {
 }
 
 .select-items div {
-  padding: 6px 10px;
+  padding: 8px 10px;
   cursor: pointer;
 }
 
@@ -444,23 +389,21 @@ form#formulario button:hover {
 }
 
 .select-items div .descripcion {
-  font-size: 0.8em;
+  font-size: 0.75em;
   color: #373E40;
   margin-top: 2px;
 }
 
 /* =========================
-   CARRITO – ESTILO MEJORADO
+   CARRITO
    ========================= */
 .carrito {
-  margin-top: 40px;
+  margin: 30px auto;
   background-color: #EFEFEF;
   color: #000;
   padding: 20px;
   border-radius: 12px;
   max-width: 520px;
-  margin-left: auto;
-  margin-right: auto;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
 
@@ -505,11 +448,9 @@ form#formulario button:hover {
   background-color: #E66061;
   color: #fff;
   border-radius: 50%;
-  width: 26px;
-  height: 26px;
-  padding: 0;
-  font-size: 14px;
-  line-height: 1;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -529,13 +470,67 @@ form#formulario button:hover {
   font-weight: bold;
 }
 
-/*
-v.$color-griscalaca;
-v.$color-blanco;
-v.$color-rojo;
-v.$color-cyan;
+/* =========================
+   FORMULARIO
+   ========================= */
+form#formulario {
+  max-width: 520px;
+  margin: 20px auto;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
-*/
+form#formulario input,
+form#formulario select {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+form#formulario button {
+  border: none;
+  background-color: #E66061;
+  color: #fff;
+  font-weight: bold;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+form#formulario button:hover {
+  background-color: darkred;
+}
+
+/* =========================
+   CAROUSEL MENU
+   ========================= */
+#carouselExample {
+  max-width: 650px;
+  margin: 25px auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (min-width: 700px) {
+  #productos-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 420px) {
+  h1 {
+    font-size: 22px;
+  }
+  .producto-img {
+    height: 110px;
+  }
+}
 body {
   font-family: Arial, sans-serif;
   background-image: url("../img/indeximg/fondomosaico.png");
