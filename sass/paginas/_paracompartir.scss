@@ -144,6 +144,74 @@ background:#fff;
 
 
 /* =========================
+   CUSTOM SELECT RELLENOS
+========================= */
+
+.custom-select{
+  position:relative;
+  width:100%;
+  margin-top:5px;
+  z-index:5;
+}
+
+.select-selected{
+  background-color:#f0f0f0;
+  padding:8px 10px;
+  border:1px solid #aaa;
+  cursor:pointer;
+  border-radius:6px;
+  font-size:14px;
+}
+
+.select-items{
+
+  position:absolute;
+
+  top:calc(100% + 4px);
+
+  left:0;
+
+  background-color:#fff;
+
+  border:1px solid v.$color-griscalaca;
+
+  width:100%;
+
+  max-height:220px;
+
+  overflow-y:auto;
+
+  display:none;
+
+  z-index:9999;
+
+  border-radius:8px;
+
+  box-shadow:0 12px 25px rgba(0,0,0,.30);
+
+}
+
+.select-items div{
+  padding:8px 10px;
+  cursor:pointer;
+}
+
+.select-items div:hover{
+  background-color:#f1f1f1;
+}
+
+.select-items div .nombre{
+  font-weight:bold;
+}
+
+.select-items div .descripcion{
+  font-size:0.75em;
+  color:v.$color-griscalaca;
+  margin-top:2px;
+}
+
+
+/* =========================
    LISTA RELLENOS ELEGIDOS
 ========================= */
 

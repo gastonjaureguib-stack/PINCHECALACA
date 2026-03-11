@@ -29,14 +29,16 @@ imagen:"../img/pacompartirimg/burrito.png"
 ]
 
 const rellenos = [
-"Al Pastor (Bondiola de cerdo condimentada en salsa de especias + piña)",
-"Cochinita pibil (Bondiola de cerdo desmechada macerada en jugo de naranja.)",
-"Chicharron prensado (Cueritos de cerdo fritos en salsa de tomate.)",
-"Frijol con chicharrón (Chicharron prensado en salsa de tomate con frijoles negros)",
-"Birria (Carne de res estofada lentamente en una mezcla de especias)",
-"Milanesa (Milanesa de pollo cortada en tiras)",
-"Hongos (Mix de hongos frescos salteados con succhini y cebolla)",
-"Rajas poblabas (pimientos con maíz en salsa cremosa de queso.)",
+
+{nombre:"Al Pastor",descripcion:"Bondiola de cerdo condimentada en salsa de especias + piña"},
+{nombre:"Cochinita pibil",descripcion:"Bondiola de cerdo desmechada macerada en jugo de naranja"},
+{nombre:"Chicharron prensado",descripcion:"Cueritos de cerdo fritos en salsa de tomate"},
+{nombre:"Frijol con chicharrón",descripcion:"Chicharron prensado en salsa de tomate con frijoles negros"},
+{nombre:"Birria",descripcion:"Carne de res estofada lentamente en una mezcla de especias"},
+{nombre:"Milanesa",descripcion:"Milanesa de pollo cortada en tiras"},
+{nombre:"Hongos",descripcion:"Mix de hongos frescos salteados con zucchini y cebolla"},
+{nombre:"Rajas poblanas",descripcion:"Pimientos con maíz en salsa cremosa de queso"}
+
 ]
 
 const antojitos = [
@@ -75,10 +77,19 @@ contenido += `
 
 <div class="rellenos-seleccionados"></div>
 
-<select class="select-rellenos">
-<option value="">Seleccionar relleno</option>
-${rellenos.map(r => `<option value="${r}">${r}</option>`).join("")}
-</select>
+<div class="custom-select select-rellenos">
+<div class="select-selected">Seleccionar relleno</div>
+
+<div class="select-items">
+${rellenos.map(r => `
+<div data-nombre="${r.nombre}">
+<div class="nombre">${r.nombre}</div>
+<div class="descripcion">${r.descripcion}</div>
+</div>
+`).join("")}
+</div>
+
+</div>
 
 `
 
@@ -118,21 +129,23 @@ card.innerHTML = contenido
    CONTROL TACOS
 ====================== */
 
-const selectTacos = card.querySelector(".select-rellenos")
+const customSelect = card.querySelector(".select-rellenos")
 
-if(selectTacos){
+if(customSelect){
 
 const seleccionadosDiv = card.querySelector(".rellenos-seleccionados")
+const options = customSelect.querySelectorAll("[data-nombre]")
+const selected = customSelect.querySelector(".select-selected")
+
 let seleccionados = []
 
-selectTacos.addEventListener("change",()=>{
+options.forEach(op=>{
 
-const valor = selectTacos.value
-if(valor === "") return
+op.addEventListener("click",()=>{
 
-const nombreRelleno = valor.split("(")[0].trim()
+const nombre = op.getAttribute("data-nombre")
 
-if(seleccionados.includes(nombreRelleno)){
+if(seleccionados.includes(nombre)){
 alert("Ese relleno ya fue elegido")
 return
 }
@@ -142,13 +155,15 @@ alert("Solo puedes elegir 5 rellenos")
 return
 }
 
-seleccionados.push(nombreRelleno)
+seleccionados.push(nombre)
 
 seleccionadosDiv.innerHTML = `
 <strong>Elegidos:</strong> ${seleccionados.join(", ")}
 `
 
-selectTacos.value = ""
+selected.textContent = "Seleccionar relleno"
+
+})
 
 })
 
@@ -184,13 +199,25 @@ const div = document.createElement("div")
 div.innerHTML = `
 <strong>${antojito}</strong>
 <br>
-<select class="relleno-antojito">
-<option value="">Elegir relleno</option>
-${rellenos.map(r => `<option value="${r}">${r}</option>`).join("")}
-</select>
+
+<div class="custom-select relleno-antojito">
+<div class="select-selected">Elegir relleno</div>
+
+<div class="select-items">
+${rellenos.map(r => `
+<div data-nombre="${r.nombre}">
+<div class="nombre">${r.nombre}</div>
+<div class="descripcion">${r.descripcion}</div>
+</div>
+`).join("")}
+</div>
+
+</div>
 `
 
 contenedorElegidos.appendChild(div)
+
+initCustomSelects()
 
 selectAntojitos.value = ""
 
@@ -213,6 +240,8 @@ actualizarCarrito()
 contenedor.appendChild(card)
 
 })
+
+initCustomSelects()
 
 
 /* ======================
@@ -253,5 +282,60 @@ total += item.precio
 })
 
 document.getElementById("total").innerText = `Total: $${total}`
+
+}
+
+
+/* ======================
+   CUSTOM SELECT
+====================== */
+
+function initCustomSelects(){
+
+const selects = document.querySelectorAll('.custom-select')
+
+selects.forEach(sel=>{
+
+const selected = sel.querySelector('.select-selected')
+const items = sel.querySelector('.select-items')
+
+selected.addEventListener('click',(e)=>{
+
+e.stopPropagation()
+
+document.querySelectorAll('.select-items').forEach(menu=>{
+menu.style.display = 'none'
+})
+
+items.style.display =
+items.style.display === 'block'
+? 'none'
+: 'block'
+
+})
+
+items.querySelectorAll('[data-nombre]').forEach(option=>{
+
+option.addEventListener('click',function(){
+
+const nombre = this.getAttribute('data-nombre')
+
+selected.textContent = nombre
+
+items.style.display = 'none'
+
+})
+
+})
+
+})
+
+document.addEventListener('click',function(){
+
+document.querySelectorAll('.select-items').forEach(menu=>{
+menu.style.display = 'none'
+})
+
+})
 
 }
