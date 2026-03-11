@@ -34,6 +34,7 @@ header {
 .titulo h1 {
   font-size: 1.8rem;
   font-weight: 600;
+  margin-bottom: 3px;
 }
 
 body {
@@ -256,6 +257,7 @@ footer {
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
+  margin-bottom: 60px;
 }
 
 /* No forzamos proporción aquí */
@@ -266,7 +268,7 @@ footer {
 /* La imagen manda */
 .carousel-item img {
   width: 100%;
-  height: auto; /* 🔥 clave para NO estirar */
+  height: auto;
   display: block;
 }
 
