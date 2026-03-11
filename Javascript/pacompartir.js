@@ -6,21 +6,24 @@ const productos = [
 nombre:"Degustación de tacos",
 descripcion:"Tablita con 10 taquitos",
 precio:1390,
-tipo:"tacos"
+tipo:"tacos",
+imagen:"../img/pacompartirimg/burrito.png"
 },
 
 {
 nombre:"Tablita para dos",
 descripcion:"5 antojitos a elección",
 precio:1590,
-tipo:"antojitos"
+tipo:"antojitos",
+imagen:"../img/pacompartirimg/burrito.png"
 },
 
 {
 nombre:"La Pinche Tabla XL",
 descripcion:"10 antojitos predeterminados: 2 tacos, 2 quesaharinas, 2 burritos, 2 chimichangas, 2 volcanes",
 precio:2590,
-tipo:"xl"
+tipo:"xl",
+imagen:"../img/pacompartirimg/burrito.png"
 }
 
 ]
@@ -52,8 +55,12 @@ const card = document.createElement("div")
 card.classList.add("producto")
 
 let contenido = `
+
+<img src="${producto.imagen}" class="producto-img">
+
 <h3>${producto.nombre}</h3>
 <p>${producto.descripcion}</p>
+
 `
 
 /* ======================
