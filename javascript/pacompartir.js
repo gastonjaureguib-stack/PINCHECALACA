@@ -232,7 +232,39 @@ selectAntojitos.value = ""
 
 card.querySelector("button").addEventListener("click",()=>{
 
-carrito.push(producto)
+let itemPedido = {
+nombre: producto.nombre,
+precio: producto.precio,
+detalles:[]
+}
+
+if(producto.tipo === "tacos"){
+
+const rellenosTexto = card.querySelector(".rellenos-seleccionados")
+
+if(rellenosTexto){
+itemPedido.detalles.push(rellenosTexto.innerText)
+}
+
+}
+
+if(producto.tipo === "antojitos"){
+
+const antojitosDiv = card.querySelectorAll(".antojitos-elegidos > div")
+
+antojitosDiv.forEach(div=>{
+
+const antojito = div.querySelector("strong").innerText
+const relleno = div.querySelector(".select-selected").innerText
+
+itemPedido.detalles.push(`${antojito} - ${relleno}`)
+
+})
+
+}
+
+carrito.push(itemPedido)
+
 actualizarCarrito()
 
 })
@@ -264,6 +296,8 @@ div.classList.add("carrito-item")
 
 div.innerHTML = `
 ${item.nombre} - $${item.precio}
+<br>
+${item.detalles.join("<br>")}
 <button class="borrar-item">❌</button>
 `
 
@@ -339,3 +373,57 @@ menu.style.display = 'none'
 })
 
 }
+
+
+/* ======================
+   WHATSAPP
+====================== */
+
+const formulario = document.getElementById("formulario")
+
+formulario.addEventListener("submit", function(e){
+
+e.preventDefault()
+
+if(carrito.length === 0){
+alert("Agrega productos al carrito")
+return
+}
+
+const nombre = document.getElementById("nombre").value
+const direccion = document.getElementById("direccion").value
+const pago = document.getElementById("pago").value
+
+let mensaje = `Hola! Pedido de ${nombre}%0A%0A`
+
+let total = 0
+
+carrito.forEach(item=>{
+
+mensaje += `• ${item.nombre} - $${item.precio}%0A`
+
+item.detalles.forEach(det=>{
+mensaje += `   - ${det}%0A`
+})
+
+mensaje += "%0A"
+
+total += item.precio
+
+})
+
+mensaje += `Total: $${total}%0A`
+mensaje += `Dirección: ${direccion}%0A`
+mensaje += `Método de pago: ${pago}`
+
+const telefono = "59898021777"
+
+const url = `https://wa.me/${telefono}?text=${mensaje}`
+
+window.open(url,"_blank")
+
+})
+
+carrito = []
+actualizarCarrito()
+formulario.reset()
