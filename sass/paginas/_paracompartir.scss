@@ -63,10 +63,14 @@ transition:transform .2s ease;
 
 }
 
+.producto{
+  position:relative;
+  z-index:1;
+}
+
 .producto:hover{
-
-transform:translateY(-3px);
-
+  transform:translateY(-3px);
+  z-index:1000;
 }
 
 
@@ -165,29 +169,21 @@ background:#fff;
 
 .select-items{
 
-  position:absolute;
+position:absolute;
+top:calc(100% + 4px);
+left:0;
 
-  top:calc(100% + 4px);
+background:#fff;
+border:1px solid #ccc;
 
-  left:0;
+width:100%;
+max-height:220px;
 
-  background-color:#fff;
+overflow-y:auto;
 
-  border:1px solid v.$color-griscalaca;
+display:none;
 
-  width:100%;
-
-  max-height:220px;
-
-  overflow-y:auto;
-
-  display:none;
-
-  z-index:9999;
-
-  border-radius:8px;
-
-  box-shadow:0 12px 25px rgba(0,0,0,.30);
+z-index:9999;
 
 }
 
@@ -227,23 +223,17 @@ margin-top:4px;
 /* =========================
    ANTOJITOS ELEGIDOS
 ========================= */
-
 .antojitos-elegidos{
 
 display:flex;
-
 flex-direction:column;
-
 gap:6px;
-
-max-height:180px;
-
-overflow-y:auto;
 
 margin-bottom:6px;
 
-}
+overflow:visible;
 
+}
 
 /* cada antojito */
 
