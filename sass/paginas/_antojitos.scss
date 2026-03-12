@@ -41,7 +41,7 @@ h1 {
   transition: transform .2s ease;
 
   position: relative;
-  overflow: visible; /* 👈 permite que el dropdown salga de la tarjeta */
+  overflow: visible;
 }
 
 .producto:hover {
@@ -95,7 +95,7 @@ h1 {
   position: relative;
   width: 100%;
   margin-top: 5px;
-  z-index: 5; /* 👈 asegura que esté por encima del resto */
+  z-index: 5;
 }
 
 .select-selected {
@@ -278,12 +278,44 @@ form#formulario button:hover {
    CAROUSEL MENU
    ========================= */
 
+/* =========================
+   CAROUSEL MENU
+========================= */
+
 #carouselExample{
-  max-width:650px;
-  margin:25px auto;
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 10px 25px rgba(0,0,0,0.35);
+
+width:100%;
+
+max-width:100%;
+
+margin:30px 0;
+
+border-radius:0;
+
+overflow:hidden;
+
+box-shadow:none;
+
+}
+
+/* cada slide */
+
+#carouselExample .carousel-item{
+
+width:100%;
+
+}
+
+/* imagen */
+
+#carouselExample .carousel-item img{
+
+width:100%;
+
+height:auto;
+
+display:block;
+
 }
 
 
